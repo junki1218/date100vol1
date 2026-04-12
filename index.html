@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>データで繁盛！学園祭カフェ・マネージャー</title>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app-container">
+        <header id="header">
+            <div id="top-controls">
+                <button id="settings-btn" title="設定">⚙️</button>
+                <button id="reset-btn" title="リセット">🔄</button>
+                <button id="skip-btn" title="10個スキップ">⏭️</button>
+            </div>
+            <div id="header-title-area">
+                <h1 id="stage-title">ステージ1: 注文を整理しよう</h1>
+                <p id="stage-goal">100人分の注文を分類して、一番人気を見つけよう！</p>
+            </div>
+        </header>
+
+        <div id="order-area-wrapper">
+            <div id="order-area"></div>
+        </div>
+
+        <main id="main-content">
+            <div id="table-container">
+                <table id="frequency-table">
+                    <thead>
+                        <tr>
+                            <th>メニュー</th>
+                            <th>人数 <button id="toggle-counts-btn" class="visibility-toggle-btn" title="表示/非表示">👁️</button></th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body"></tbody>
+                </table>
+            </div>
+            
+            <div id="graph-panel">
+                <div id="graph-tabs">
+                    <button class="graph-tab active" data-type="bar">棒グラフ</button>
+                    <button class="graph-tab" data-type="line">折れ線グラフ</button>
+                    <button class="graph-tab" data-type="pie">円グラフ</button>
+                    <button class="graph-tab" data-type="stacked">積み上げ棒</button>
+                    <button class="graph-tab" data-type="scatter">分布図</button>
+                    <button id="toggle-graph-btn" class="visibility-toggle-btn" title="表示/非表示">👁️</button>
+                </div>
+                
+                <div id="graph-main-area">
+                    <div id="graph-y-axis" class="y-axis"></div>
+                    <div id="graph-render-area">
+                        <!-- charts.js が操作します -->
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer id="feedback-panel">
+            <div id="character"></div>
+            <div id="message-box">
+                <p id="message-text">まずは注文を1つずつタッチしてね！</p>
+            </div>
+            <button id="action-btn" class="btn disabled">判定する</button>
+        </footer>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h2>設定 / アイテムの変更</h2>
+            <p style="font-size: 0.9rem; margin-bottom: 15px;">好きな写真や名前に変更できます</p>
+            <div id="settings-list"></div>
+            <button id="settings-save-btn" class="btn" style="margin-top: 20px;">設定してリスタート</button>
+        </div>
+    </div>
+
+    <!-- Password Modal -->
+    <div id="password-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h2>「10個スキップ」機能のロック解除</h2>
+            <p style="font-size: 0.9rem; margin-bottom: 15px;">パスワードを入力してください。</p>
+            <div style="text-align: center;">
+                <input type="password" id="password-input" style="font-size: 1.2rem; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <button id="password-unlock-btn" class="btn">解除する</button>
+                <button id="password-cancel-btn" class="btn" style="background-color: #ccc;">キャンセル</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
